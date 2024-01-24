@@ -17,7 +17,12 @@ function startCompass() {
 			})
 			.catch(() => alert("not supported"));
 	} else {
+		try {
 		window.addEventListener("deviceorientationabsolute", handler, true);
+		}
+		catch (e) {
+			alert(e);
+		}
 	}
 }
 
