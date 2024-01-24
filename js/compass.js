@@ -6,5 +6,5 @@ window.onload = function() {
 		let time_now = date_now.getTime();
 		let angle = (time_now / 10) % 360;
 		arrow.style.transform = 'rotate(' + angle + 'deg)';
-	}, 10);
+	}, 20);
 }
