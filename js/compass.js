@@ -1,6 +1,6 @@
 // From https://dev.to/orkhanjafarovr/real-compass-on-mobile-browsers-with-javascript-3emi
 var arrow;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 if (isIOS) {
 	alert("Hi! You're on iOS!");
 }
