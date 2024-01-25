@@ -33,7 +33,7 @@ function locationError(e) {
 
 function locationHandler(e) {
 	position = [e.coords.latitude, e.coords.longitude];
-	debug.innerHTML = position;
+	debug.innerHTML = "Position: " + position;
 }
 
 function compassHandler(e) {
