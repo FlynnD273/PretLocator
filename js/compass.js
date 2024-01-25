@@ -6,34 +6,44 @@ const isIOS = (
 );
 
 function startCompass() {
-	if (isIOS) {
-		DeviceOrientationEvent.requestPermission()
-			.then((response) => {
-				if (response === "granted") {
-					window.addEventListener("deviceorientation", handler, true);
-				} else {
-					alert("has to be allowed!");
-				}
-			})
-			.catch(() => alert("not supported"));
-	} else {
-		try {
-		window.addEventListener("deviceorientationabsolute", handler, true);
+	try {
+		if (isIOS) {
+			DeviceOrientationEvent.requestPermission()
+				.then((response) => {
+					if (response === "granted") {
+						window.addEventListener("deviceorientation", handler, true);
+					} else {
+						alert("has to be allowed!");
+					}
+				})
+				.catch(() => alert("not supported"));
+		} else {
+			window.addEventListener("deviceorientationabsolute", handler, true);
 		}
-		catch (e) {
-			alert(e);
-		}
+	}
+	catch (e) {
+		alert(e);
 	}
 }
 
 function handler(e) {
-	angle = e.webkitCompassHeading || Math.abs(e.alpha - 360);
-	arrow.style.transform = 'rotate(' + angle + 'deg)';
+	try {
+		angle = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+		arrow.style.transform = 'rotate(' + angle + 'deg)';
+	}
+	catch (e) {
+		alert(e);
+	}
 }
 
 window.onload = function() {
-	arrow = document.getElementsByClassName("arrow")[0];
-	startCompass();
+	try {
+		arrow = document.getElementsByClassName("arrow")[0];
+		startCompass();
+	}
+	catch (e) {
+		alert(e);
+	}
 	// console.log(arrow);
 	// setInterval(function() {
 	// 	let date_now = new Date();
