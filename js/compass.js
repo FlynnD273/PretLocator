@@ -44,6 +44,7 @@ window.onload = function() {
 }
 
 function startClick(e) {
-	e.target.style.display = "none";
-	startCompass();
+	e.target.innerHTML = navigator.userAgent;
+	// e.target.style.display = "none";
+	// startCompass();
 }
