@@ -26,7 +26,7 @@ function handler(e) {
 	let alpha;
 	// Check for iOS property
 	if (e.webkitCompassHeading) {
-		alpha = e.webkitCompassHeading;
+		alpha = -e.webkitCompassHeading;
 	} else { // non iOS
 		alpha = e.alpha - 90;
 		if (!window.chrome) {
