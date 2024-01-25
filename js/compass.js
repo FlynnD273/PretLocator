@@ -24,7 +24,7 @@ function startCompass() {
 	let options = {
 		enableHighAccuracy: true,
 	};
-	navigator.geolocation.getCurrentPosition(locationHandler, locationError, options);
+	navigator.geolocation.watchPosition(locationHandler, locationError, options);
 }
 
 function locationError(e) {
