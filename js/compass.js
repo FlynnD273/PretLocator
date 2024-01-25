@@ -28,7 +28,7 @@ function startCompass() {
 
 function handler(e) {
 	try {
-		angle = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+		angle = -(e.webkitCompassHeading || Math.abs(e.alpha - 360));
 		arrow.style.transform = 'rotate(' + angle + 'deg)';
 	}
 	catch (e) {
