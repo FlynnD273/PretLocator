@@ -1,6 +1,6 @@
 // From https://dev.to/orkhanjafarovr/real-compass-on-mobile-browsers-with-javascript-3emi
 var arrow;
-const isIOS = !(
+const isIOS = (
 	navigator.userAgent.match(/(iPod|iPhone|iPad)/) &&
 	navigator.userAgent.match(/AppleWebKit/)
 );
