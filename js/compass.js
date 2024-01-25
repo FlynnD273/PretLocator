@@ -33,7 +33,7 @@ function locationError(e) {
 }
 
 function locationHandler(e) {
-	position = [e.coords.longitude, e.coords.latitude];
+	position = [e.coords.latitude, e.coords.longitude];
 	debug.innerHTML = position;
 }
 
@@ -51,7 +51,9 @@ function compassHandler(e) {
 	}
 
 	if (!position) {
-		alpha = Math.random() * 360;
+		let date_now = new Date();
+		let time_now = date_now.getTime();
+		alpha = (time_now / 10) % 360;
 	}
 	arrow.style.transform = 'rotate(' + alpha + 'deg)';
 }
