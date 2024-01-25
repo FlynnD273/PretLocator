@@ -1,5 +1,4 @@
-body,
-html {
+div {
 	margin: 0;
 	padding: 0;
 	height: 100vh;
@@ -10,9 +9,9 @@ html {
 	overflow: hidden;
 }
 
-p {
-	text-align: center;
-}
+/* p { */
+/* 	text-align: center; */
+/* } */
 
 .arrow {
 	height: 80vw;
