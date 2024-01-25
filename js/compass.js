@@ -27,12 +27,8 @@ function startCompass() {
 	navigator.geolocation.getCurrentPosition(locationHandler, locationError, options);
 }
 
-var f;
 function locationError(e) {
-	if (!f) {
-		alert(e.message);
-		f = 1;
-	}
+	debug.innerHTML = e.message;
 }
 
 function locationHandler(e) {
