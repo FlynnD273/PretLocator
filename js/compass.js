@@ -1,12 +1,21 @@
 // From https://dev.to/orkhanjafarovr/real-compass-on-mobile-browsers-with-javascript-3emi
 var arrow;
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 function startCompass() {
-	if (window.DeviceOrientationEvent) {
-		// Listen for the deviceorientation event and handle the raw data
-		window.addEventListener("deviceorientation", handler, true);
+	arrow.style.display = "block";
+	if (isIOS) {
+		DeviceOrientationEvent.requestPermission()
+			.then((response) => {
+				if (response === "granted") {
+					window.addEventListener("deviceorientation", handler, true);
+				} else {
+					alert("has to be allowed!");
+				}
+			})
+			.catch(() => alert("not supported"));
 	} else {
-		alert("Device does not support compass heading!");
+		window.addEventListener("deviceorientationabsolute", handler, true);
 	}
 }
 
@@ -16,10 +25,10 @@ function handler(e) {
 	if (e.webkitCompassHeading) {
 		alpha = e.webkitCompassHeading;
 	} else { // non iOS
-		alpha = e.alpha;
+		alpha = e.alpha - 90;
 		if (!window.chrome) {
 			// Assume Android stock
-			alpha = alpha - 270;
+			alpha -= 270;
 		}
 	}
 
@@ -27,11 +36,11 @@ function handler(e) {
 }
 
 window.onload = function() {
-	try {
-		arrow = document.getElementsByClassName("arrow")[0];
-		startCompass();
-	}
-	catch (e) {
-		alert(e);
-	}
+	arrow = document.getElementsByClassName("arrow")[0];
+	arrow.style.display = "none";
+}
+
+function startClick(e) {
+	e.target.style.display = "none";
+	startCompass();
 }
