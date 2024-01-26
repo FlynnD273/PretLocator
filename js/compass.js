@@ -21,10 +21,11 @@ function startCompass() {
 	} else {
 		window.addEventListener("deviceorientationabsolute", compassHandler, true);
 	}
-	let options = {
+	options = {
 		enableHighAccuracy: true,
 	};
-	navigator.geolocation.watchPosition(locationHandler, locationError, options);
+
+	setInterval(() => navigator.geolocation.getCurrentPosition(locationHandler, locationError, options), 1000);
 }
 
 function locationError(e) {
