@@ -33,7 +33,7 @@ function startCompass() {
 		enableHighAccuracy: true,
 	};
 
-	setInterval(() => navigator.geolocation.getCurrentPosition(locationHandler, locationError, options), 1000);
+	navigator.geolocation.watchPosition(locationHandler, locationError, options);
 }
 
 function locationError(e) {
@@ -62,7 +62,7 @@ function locationHandler(e) {
 		}
 	}
 	target = pretLocations[index];
-	debug.innerHTML = "Position: " + position + "<br/>Target: " + target;
+	debug.innerHTML = "Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}";
 
 }
 
