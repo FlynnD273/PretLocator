@@ -62,7 +62,7 @@ function locationHandler(e) {
 		}
 	}
 	target = pretLocations[index];
-	debug.innerHTML = "Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}";
+	debug.innerHTML = `Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}`;
 
 }
 
