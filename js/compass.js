@@ -2,6 +2,7 @@
 var debug;
 var arrow;
 var position;
+var posAngle;
 var target = [51.521900, -0.124490];
 const isIOS = /iPad|iPhone|iPod|Apple/.test(navigator.userAgent);
 
@@ -62,7 +63,7 @@ function locationHandler(e) {
 		}
 	}
 	target = pretLocations[index];
-	debug.innerHTML = `Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}`;
+	debug.innerHTML = `Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}<br/>Angle Offset: ${posAngle} rad ${posAngle * 180 / Math.PI} degrees`;
 
 }
 
