@@ -6,7 +6,7 @@ var target = [51.521900, -0.124490];
 const isIOS = /iPad|iPhone|iPod|Apple/.test(navigator.userAgent);
 
 var pretLocations;
-fetch("/json/pret.json")
+fetch("./json/pret.json")
 	.then(response => { return response.json(); })
 	.then(data => {
 		pretLocations = data.points;
@@ -48,6 +48,7 @@ function locationHandler(e) {
 	position = [e.coords.latitude, e.coords.longitude];
 	if (pretLocations.length == 0) {
 		target = null;
+		debug.innerHTML = "Position: " + position;
 		return;
 	}
 
