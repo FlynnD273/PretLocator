@@ -84,7 +84,7 @@ function compassHandler(e) {
 		let time_now = date_now.getTime();
 		alpha = (time_now / 10) % 360;
 	} else {
-		posAngle = Math.atan2(target[0] - position[0], target[1] - position[1]) + 90;
+		posAngle = Math.PI / 2 - Math.atan2(target[0] - position[0], target[1] - position[1]);
 		alpha += posAngle;
 	}
 	arrow.style.transform = 'rotate(' + alpha + 'deg)';
