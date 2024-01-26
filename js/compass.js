@@ -62,7 +62,8 @@ function locationHandler(e) {
 		}
 	}
 	target = pretLocations[index];
-	debug.innerHTML = "Position: " + position + "\nTarget: " + target;
+	debug.innerHTML = "Position: " + position + "<br/>Target: " + target;
+
 }
 
 function compassHandler(e) {
