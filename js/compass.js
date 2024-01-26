@@ -43,7 +43,7 @@ function compassHandler(e) {
 	if (e.webkitCompassHeading) {
 		alpha = -e.webkitCompassHeading;
 	} else { // non iOS
-		alpha = e.alpha;
+		alpha = e.alpha - 90;
 		if (!window.chrome) {
 			// Assume Android stock
 			alpha -= 270;
