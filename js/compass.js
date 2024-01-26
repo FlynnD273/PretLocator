@@ -5,6 +5,14 @@ var position;
 var target = [51.521900, -0.124490];
 const isIOS = /iPad|iPhone|iPod|Apple/.test(navigator.userAgent);
 
+var pretLocations;
+fetch("/json/pret.json")
+	.then(response => { return response.json(); })
+	.then(data => {
+		pretLocations = data.points;
+	})
+	.catch(error => alert('Error fetching Pre locations:', error));
+
 function startCompass() {
 	arrow.style.display = "block";
 
@@ -32,9 +40,28 @@ function locationError(e) {
 	debug.innerHTML = e.message;
 }
 
+function distance(a, b) {
+	return (a[1] - b[1]) * (a[1] - b[1]) + (a[0] - b[0]) * (a[0] - b[0]);
+}
+
 function locationHandler(e) {
 	position = [e.coords.latitude, e.coords.longitude];
-	debug.innerHTML = "Position: " + position;
+	if (pretLocations.length == 0) {
+		target = null;
+		return;
+	}
+
+	let dist = distance(position, pretLocations[0]);
+	let index = 0;
+	for (let i = 1; i < pretLocations.length; i++) {
+		let d = distance(position, pretLocations[i]);
+		if (d < dist) {
+			index = i;
+			dist = d;
+		}
+	}
+	target = pretLocations[index];
+	debug.innerHTML = "Position: " + position + "\nTarget: " + target;
 }
 
 function compassHandler(e) {
@@ -50,7 +77,7 @@ function compassHandler(e) {
 		}
 	}
 
-	if (!position) {
+	if (!position && !target) {
 		let date_now = new Date();
 		let time_now = date_now.getTime();
 		alpha = (time_now / 10) % 360;
