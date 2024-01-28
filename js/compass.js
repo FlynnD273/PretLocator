@@ -65,7 +65,7 @@ function locationHandler(e) {
 		}
 	}
 	target = pretLocations[index];
-	debug.innerHTML = `Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}<br/>Angle Offset: ${posAngle} rad ${posAngle * 180 / Math.PI} degrees`;
+	debug.innerHTML = `Platform: ${isIOS ? "iOS" : "Android"}<br/>Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}<br/>Angle Offset: ${posAngle} rad ${posAngle * 180 / Math.PI} degrees`;
 
 }
 
