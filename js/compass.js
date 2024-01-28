@@ -1,6 +1,7 @@
 // From https://dev.to/orkhanjafarovr/real-compass-on-mobile-browsers-with-javascript-3emi
 var debug;
 var arrow;
+var arrowNorth;
 var position;
 var posAngle;
 var target = [51.521900, -0.124490];
@@ -16,6 +17,7 @@ fetch("./json/pret.json")
 
 function startCompass() {
 	arrow.style.display = "block";
+	arrowNorth.style.display = "block";
 
 	if (isIOS) {
 		DeviceOrientationEvent.requestPermission()
@@ -79,6 +81,7 @@ function compassHandler(e) {
 			alpha -= 270;
 		}
 	}
+	let north = alpha;
 
 	if (!position && !target) {
 		let date_now = new Date();
@@ -89,12 +92,15 @@ function compassHandler(e) {
 		alpha += posAngle * 180 / Math.PI;
 	}
 	arrow.style.transform = 'rotate(' + alpha + 'deg)';
+	arrowNorth.style.transform = 'rotate(' + north + 'deg)';
 }
 
 window.onload = function() {
-	arrow = document.getElementsByClassName("arrow")[0];
+	arrow = document.getElementsById("arrow");
+	arrowNorth = document.getElementsById("arrowNorth");
 	debug = document.getElementById("debug");
 	arrow.style.display = "none";
+	arrowNorth.style.display = "none";
 }
 
 function startClick(e) {
