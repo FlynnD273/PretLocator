@@ -51,7 +51,6 @@ function locationHandler(e) {
 	position = [e.coords.latitude, e.coords.longitude];
 	if (pretLocations.length == 0) {
 		target = null;
-		debug.innerHTML = "Position: " + position;
 		return;
 	}
 
@@ -65,8 +64,6 @@ function locationHandler(e) {
 		}
 	}
 	target = pretLocations[index];
-	debug.innerHTML = `Platform: ${isIOS ? "iOS" : "Android"}<br/>Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}<br/>Angle Offset: ${posAngle} rad ${posAngle * 180 / Math.PI} degrees`;
-
 }
 
 function compassHandler(e) {
@@ -93,6 +90,8 @@ function compassHandler(e) {
 	}
 	arrow.style.transform = 'rotate(' + alpha + 'deg)';
 	arrowNorth.style.transform = 'rotate(' + north + 'deg)';
+
+	debug.innerHTML = `Platform: ${isIOS ? "iOS" : "Android"}<br/>Position: ${position}<br/>Target: ${target}<br/>Distance (arbitrary unit): ${dist}<br/>Angle Offset: ${posAngle} rad ${posAngle * 180 / Math.PI} degrees`;
 }
 
 window.onload = function() {
