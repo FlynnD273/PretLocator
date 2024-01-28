@@ -19,4 +19,5 @@ div {
 
 .arrow {
 	height: 80vw;
+	position: absolute;
 }

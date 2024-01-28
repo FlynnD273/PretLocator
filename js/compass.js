@@ -13,7 +13,7 @@ fetch("./json/pret.json")
 	.then(data => {
 		pretLocations = data.points;
 	})
-	.catch(error => alert('Error fetching Pre locations:', error));
+	.catch(error => alert('Error fetching Pret locations:', error));
 
 function startCompass() {
 	arrow.style.display = "block";
@@ -96,8 +96,8 @@ function compassHandler(e) {
 }
 
 window.onload = function() {
-	arrow = document.getElementsById("arrow");
-	arrowNorth = document.getElementsById("arrowNorth");
+	arrow = document.getElementById("arrow");
+	arrowNorth = document.getElementById("arrowNorth");
 	debug = document.getElementById("debug");
 	arrow.style.display = "none";
 	arrowNorth.style.display = "none";
