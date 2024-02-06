@@ -4,6 +4,7 @@ var arrow;
 var arrowNorth;
 var position;
 var posAngle;
+var dist;
 var target = [51.521900, -0.124490];
 const isIOS = /iPad|iPhone|iPod|Apple/.test(navigator.userAgent);
 
@@ -16,8 +17,8 @@ fetch("./json/pret.json")
 	.catch(error => alert('Error fetching Pret locations:', error));
 
 function startCompass() {
-	arrow.style.display = "block";
-	arrowNorth.style.display = "block";
+	arrow.style.visibility = "visible";
+	arrowNorth.style.visibility = "visible";
 
 	if (isIOS) {
 		DeviceOrientationEvent.requestPermission()
@@ -54,7 +55,7 @@ function locationHandler(e) {
 		return;
 	}
 
-	let dist = distance(position, pretLocations[0]);
+	dist = distance(position, pretLocations[0]);
 	let index = 0;
 	for (let i = 1; i < pretLocations.length; i++) {
 		let d = distance(position, pretLocations[i]);
