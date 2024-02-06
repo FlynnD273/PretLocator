@@ -98,8 +98,6 @@ window.onload = function() {
 	arrow = document.getElementById("arrow");
 	arrowNorth = document.getElementById("arrowNorth");
 	debug = document.getElementById("debug");
-	arrow.style.display = "none";
-	arrowNorth.style.display = "none";
 }
 
 function startClick(e) {
